@@ -1,5 +1,5 @@
 {
-  "name": "lucy-portfolio",
+  "name": "lucy-portfolio",\
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "lucide-react": "^1.14.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1"
