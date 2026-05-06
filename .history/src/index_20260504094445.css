@@ -1,0 +1,55 @@
+@import url('[https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap)');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  /* Base Brand Colors */
+  --matcha: #9CA763;
+  --honey: #F1E8C7;
+  
+  /* Dark Theme Backgrounds */
+  --bg-1: #1A2015; /* Deep Olive */
+  --bg-2: #21291B; 
+  --bg-3: #161C12; 
+  --bg-4: #26301E; 
+  
+  /* Dark Theme Text Colors */
+  --text-main: #F1E8C7; /* Milky Honey text */
+  --text-muted: #9CA763; 
+  --accent: #9CA763; /* Matcha */
+  
+  /* Nav variables */
+  --nav-bg: rgba(26, 32, 21, 0.7);
+  --nav-border: rgba(156, 167, 99, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+body.light-mode {
+  /* Light Theme Backgrounds */
+  --bg-1: #F1E8C7; /* Milky Honey base */
+  --bg-2: #E8DCC0; 
+  --bg-3: #F8F1DA; 
+  --bg-4: #E0D3B0; 
+
+  /* Light Theme Text Colors */
+  --text-main: #2A3622; /* High contrast Dark Olive (not light honey) */
+  --text-muted: #5A6B42; 
+  --accent: #6C7A35; /* Darker Matcha */
+
+  /* Nav variables */
+  --nav-bg: rgba(241, 232, 199, 0.7);
+  --nav-border: rgba(108, 122, 53, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.4);
+}
+
+body {
+  background: var(--bg-1);
+  color: var(--text-main);
+  overflow: hidden; 
+  transition: background 0.5s ease, color 0.5s ease;
+}

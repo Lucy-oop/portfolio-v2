@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  /* Global Base Defaults (Matches Dark Page 1) */
+  --bg-global: #201f19;
+  --text-global: #e6e1c5;
+  --nav-bg: rgba(32, 31, 25, 0.7);
+  --nav-border: rgba(230, 225, 197, 0.2);
+}
+
+body.light-mode {
+  /* Global Base Defaults (Matches Light Page 1) */
+  --bg-global: #EBE3CB;
+  --text-global: #7A8759;
+  --nav-bg: rgba(235, 227, 203, 0.7);
+  --nav-border: rgba(122, 135, 89, 0.2);
+}
+
+body {
+  background: var(--bg-global);
+  color: var(--text-global);
+  overflow: hidden; 
+  transition: background 0.5s ease, color 0.5s ease;
+}

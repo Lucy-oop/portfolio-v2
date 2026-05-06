@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  overflow: hidden; 
+  /* Default dark theme fallbacks */
+  background-color: #201f19;
+  color: #e6e1c5;
+  --global-accent: #b5ac8f; 
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.light-mode {
+  /* Default light theme fallbacks */
+  background-color: #EBE3CB;
+  color: #7A8759;
+  --global-accent: #7A8759; 
+}

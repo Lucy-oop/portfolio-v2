@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  /* Nav & Card globals for Dark Mode */
+  --nav-bg: rgba(32, 31, 25, 0.7);
+  --nav-border: rgba(230, 225, 197, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+body.light-mode {
+  /* Nav & Card globals for Light Mode */
+  --nav-bg: rgba(235, 227, 203, 0.7);
+  --nav-border: rgba(122, 135, 89, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.4);
+}
+
+body {
+  /* Fallbacks that match Page 1 */
+  background: var(--bg-color, #201f19);
+  color: var(--text-main, #e6e1c5);
+  overflow: hidden; 
+  transition: background 0.5s ease, color 0.5s ease;
+}

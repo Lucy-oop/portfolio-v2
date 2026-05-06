@@ -1,0 +1,149 @@
+/* =========================================
+   1. NAVBAR CORE STYLES
+   ========================================= */
+.glass-nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: var(--nav-bg, rgba(32, 31, 25, 0.6));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--nav-border, rgba(255, 255, 255, 0.1));
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: var(--text-main, #e6e1c5);
+  transition: background 0.5s, border 0.5s, color 0.5s;
+}
+
+
+.glow {
+  --glow-line-color: var(--global-accent, #b5ac8f);
+  --glow-line-thickness: 2px;
+  --glow-line-length: 1;
+  --glow-blur-color: var(--global-accent, #b5ac8f);
+  --glow-blur-size: 8px;
+  --animation-speed: 8s; 
+  --container-offset: 40px;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  z-index: -1; 
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset));
+  height: calc(100% - var(--container-offset));
+  x: calc(var(--container-offset) / 2);
+  y: calc(var(--container-offset) / 2);
+  rx: 30px; /* Gives the SVG the pill shape to match the nav */
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(100 - var(--glow-line-length));
+  
+  /* Start the running animation */
+  animation: runLight var(--animation-speed) linear infinite;
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+/* The infinite running animation */
+@keyframes runLight {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* =========================================
+   3. NAV ITEMS & LINKS
+   ========================================= */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-brand-icon {
+  background: var(--card-bg, rgba(255, 255, 255, 0.1));
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 18px;
+  background: currentColor;
+  opacity: 0.3;
+  margin: 0 4px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .glass-nav {
+    top: 16px;
+    width: 95%;
+    padding: 12px 16px;
+  }
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 12px; }
+}

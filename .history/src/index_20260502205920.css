@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+    --color1 :rgb(234, 228, 213);
+    --color2 :rgb(182, 176, 159);
+    --color3 :rgb(0, 0, 0);
+    --color4 :rgb(255, 252, 251);
+}
+ /*  light mode switch  */
+body.light-mode {
+  background: white;
+  color: black;
+}
