@@ -1,0 +1,63 @@
+/* =========================================
+   ANIMATED PREVIEW HINT
+   ========================================= */
+.preview-hint {
+  position: fixed;
+  top: clamp(200px, 35vh, 400px);
+  left: clamp(40px, 12vw, 250px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: "Courier New", Courier, monospace;
+  color: var(--text-primary);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 900;
+  transition: opacity 0.5s ease;
+}
+
+/* Fades the hint out completely when an image is hovered */
+.preview-hint.hide {
+  opacity: 0 !important;
+}
+
+.preview-hint p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+.hint-icon {
+  font-size: 32px;
+  color: var(--accent);
+  animation: pulseIcon 2s ease-in-out infinite;
+}
+
+/* The entrance animation triggered by scrolling */
+.preview-hint.animate-in {
+  animation: slideFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s; /* Slight delay so it appears right after they scroll */
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 15px var(--accent); }
+}
+
+/* Hide the hint exactly when the image previews are hidden */
+@media (max-width: 1024px) {
+  .preview-hint {
+    display: none !important;
+  }
+}

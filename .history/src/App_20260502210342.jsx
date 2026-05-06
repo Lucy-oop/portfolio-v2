@@ -1,0 +1,44 @@
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Preloader from "./components/Preloader";
+import Contact from "./components/Contact";
+
+import "./App.css";
+
+function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const hide = () => setLoading(false);
+
+    if (document.readyState === "complete") {
+      hide();
+    } else {
+      window.addEventListener("load", hide);
+      return () => window.removeEventListener("load", hide);
+    }
+  }, []);
+
+  return (
+    <>
+      <Preloader show={loading} />
+      <About/>
+      <Projects/>
+      <Skills />
+      <Contact />
+      
+
+      <div className="lines">
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div>
+    </>
+  );
+}
+
+export default App;

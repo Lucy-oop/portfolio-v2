@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;0,600;0,700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* project*/
+.project-container {
+  position: relative;
+  z-index: 5;
+  margin-top: 20px;   
+  margin-left: 120px;   
+  padding-left: 12px; 
+  display: flex;
+  flex-direction: column;
+  margin-right: clamp(16px, 4vw, 40px);
+  height: 100%;
+}
+
+.allproject {
+  margin-top: clamp(18px, 4vw, 16px);
+  text-align: right;
+  margin-left: auto;
+  margin-right: clamp(12px, 2vw, 28px);
+  max-width: min(52ch, 55%);
+}
+
+.project {
+  margin-bottom: clamp(14px, 2vw, 24px);
+}
+
+.project .pname {
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  font-style: normal;
+  text-decoration: none;
+  font-size: clamp(32px, 4.2vw, 44px);
+  font-weight: 300;
+  position: relative;
+  display: inline-block;
+  line-height: 0.95;
+  color: var(--text-primary, #f1e5d5); 
+  opacity: 0.5; 
+  transition: opacity 0.5s ease;
+  white-space: nowrap; 
+}
+
+.project .pname::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%; 
+  height: 100%;
+  line-height: inherit; 
+  color: var(--accent, #06c92d); 
+  text-shadow: 
+    0 0 10px var(--accent, #06c92d), 
+    0 0 20px var(--accent, #06c92d);
+    
+  overflow: hidden; 
+  white-space: nowrap; 
+  pointer-events: none; 
+  z-index: 2; 
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Brightens the base text subtly as the glow sweeps over */
+.project .pname:hover {
+  opacity: 0.9; 
+}
+
+/* On hover, the width expands to 100%, dragging the glow from Left to Right */
+.project .pname:hover::after,
+.project .pname:focus-visible::after {
+  width: 100%;
+}
+
+/* =========================================
+   LIQUID HINT ANIMATION CONTAINER
+   ========================================= */
+.liquid-hint {
+  position: absolute;
+  top: clamp(60px, 25vh, 10px);
+  left: clamp(20px, 10vw, 80px);
+  width: clamp(280px, 40vw, 680px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.liquid-hint.hide { opacity: 0 !important; }
+.liquid-hint.show { opacity: 1; }
+
+/* =========================================
+   HINT CONTENT (SLIDES FROM LEFT)
+   ========================================= */
+.hint-content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hint-content.aos-active {
+  opacity: 1;
+  transform: translateX(0); 
+}
+
+.hint-content h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: clamp(38px, 6vw, 64px);
+  color: var(--text-primary, #ffffff);
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.hint-content p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: var(--text-primary, #ffffff);
+  margin-top: 18px;
+  opacity: 0.7;
+}
+
+/* =========================================
+   THE SEMI-TRANSPARENT MORPHING SHAPES
+   ========================================= */
+.shape {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0.15;
+  background: var(--accent, #00ffcc);
+  box-shadow: 0 0 40px var(--accent, #00ffcc);
+  animation: morphAnimation 20s infinite;
+  filter: blur(8px);
+}
+
+.shape-1 { animation-delay: 0s; }
+.shape-2 { animation-delay: -5s; transform: scale(1.1); opacity: 0.1; }
+.shape-3 { animation-delay: -10s; transform: scale(0.9); }
+
+@keyframes morphAnimation {
+  0%   { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+  25%  { border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%; }
+  50%  { border-radius: 40% 60% 60% 40% / 60% 60% 40% 40%; }
+  75%  { border-radius: 60% 40% 40% 60% / 40% 40% 60% 60%; }
+  100% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+}
+
+/* =========================================
+   PROJECT CORNER PREVIEW
+   ========================================= */
+.cornerPreview {
+  position: fixed;
+  top: clamp(150px, 20vh, 250px);
+  left: clamp(20px, 8vw, 200px);
+  width: clamp(280px, 40vw, 680px);
+  aspect-ratio: 1 / 1; 
+  height: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px) rotateX(15deg) scale(0.9);
+  perspective: 1000px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--accent, #00ffcc);
+}
+
+.cornerPreview.show {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) scale(1);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+.cornerPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  transform: scale(1.1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cornerPreview.show img {
+  transform: scale(1);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 1024px) {
+  .cornerPreview, .liquid-hint, .liquid-hint.show { display: none !important; }
+  
+  .allproject {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+  
+  .project { margin-bottom: 18px; }
+  
+  .project .pname { 
+    font-size: clamp(34px, 8vw, 52px); 
+    line-height: 1.05; 
+    letter-spacing: 0.6px; 
+    font-weight: bold; 
+  }
+  
+  .project .p-info { font-size: 12px; opacity: 0.9; }
+  .project .p-info span { margin-left: 6px; opacity: 0.85; }
+}
+
+@media (min-width: 1025px) {
+  .allproject { max-width: min(52ch, 55%); }
+}

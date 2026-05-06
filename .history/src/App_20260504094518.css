@@ -1,0 +1,82 @@
+.scroller::-webkit-scrollbar { 
+  display: none; 
+}
+
+.scroller {
+  /* Take up the exact height and width of the screen */
+  height: 100vh;
+  width: 100vw;
+  
+  /* Allow scrolling inside this container */
+  overflow-y: scroll;
+  
+  /* THE MAGIC: Force scrolling to snap to the vertical (y) axis strictly */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  /* Each section is exactly 1 screen tall and wide */
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  
+  /* Added padding to prevent the nav from covering your content */
+  padding-top: 80px; 
+}
+
+/* Distinct shifting background colors per section matching the active theme */
+.section-bg-1 { background-color: var(--bg-1); transition: background-color 0.5s ease; }
+.section-bg-2 { background-color: var(--bg-2); transition: background-color 0.5s ease; }
+.section-bg-3 { background-color: var(--bg-3); transition: background-color 0.5s ease; }
+.section-bg-4 { background-color: var(--bg-4); transition: background-color 0.5s ease; }
+
+/* Animated Background Lines */
+.lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(128, 128, 128, 0.1); /* Neutral line */
+  overflow: hidden;
+}
+
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  /* Use Matcha for drops */
+  background: linear-gradient(to bottom, transparent 0%, var(--matcha) 75%, var(--matcha) 100%);
+  animation: drop 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  opacity: 0.5;
+}
+
+.line:nth-child(1) { margin-left: -25%; }
+.line:nth-child(1)::after { animation-delay: 2s; }
+.line:nth-child(3) { margin-left: 25%; }
+.line:nth-child(3)::after { animation-delay: 2.5s; }
+
+@keyframes drop {
+  0% { top: -50%; }
+  100% { top: 110%; }
+}

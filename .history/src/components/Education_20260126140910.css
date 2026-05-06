@@ -1,0 +1,124 @@
+.container {
+    position: relative;
+    z-index: 5;
+    margin-top: 30px;
+    display: flex;
+    margin-left: 120px;
+    flex-direction: column;
+}
+
+.card-container {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;     /* ✅ stack */
+  gap: 30px;                  /* space between cards */
+  align-items: center;        /* ✅ center cards */
+}
+
+.card {
+  flex: 1;                    /* ✅ equal width */
+  background: #111;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid var(--color4);
+  padding: 32px;
+  box-sizing: border-box;
+  min-width: 0;    
+  width: min(1050px, 94%);     /* ✅ centered, responsive */
+  max-width: none;         /* remove old limits */
+
+}
+
+.card h1 {
+    margin: 6px 0 12px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 28px;
+    position: relative;
+    z-index: 2;
+}
+
+.card p {
+    margin: 8px 0;
+    line-height: 2.2;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.card li {
+    margin: 6px 0;
+    line-height: 1.6;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.card span {
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(0deg,
+            transparent,
+            transparent 30%,
+            var(--color4));
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--color4);
+}
+
+.card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+/* light mode switching*/
+
+body.light-mode {
+  background: white;
+  color: black;
+}
+
+body.light-mode .card {
+  background: var(--color4);      
+  border: 1px solid var(--color3); 
+  color: var(--color3);            
+}
+
+body.light-mode .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* soft black glow */
+}
+
+body.light-mode .card::before {
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    var(--color3) 
+  );
+}
+
+body.light-mode .card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+

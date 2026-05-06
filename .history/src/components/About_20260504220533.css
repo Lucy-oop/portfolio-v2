@@ -1,0 +1,50 @@
+/* Find these specific blocks in your About.css and replace them */
+
+.helloTitle {
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  font-size: clamp(24px, 3.8vw, 46px);
+  font-weight: 600;
+  line-height: 1.38;
+  margin: 26px 0 10px;
+  max-width: 900px;
+  word-spacing: 6px;
+}
+
+/* THE NEW VERTICAL LINE EFFECT */
+.name-wrapper {
+  margin-top: 10px;
+  /* Adjust this left margin to push the whole block further right if you want */
+  margin-left: 40px; 
+  /* This creates the actual vertical line */
+  border-left: 2px solid var(--text-primary); 
+  /* This creates the space between the line and your name */
+  padding-left: 20px; 
+  opacity: 0.8;
+}
+
+.realName,
+.nickName {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  display: inline-block;
+  position: relative;
+  padding: 0 2px;
+  cursor: pointer;
+  transition: transform 220ms ease, opacity 220ms ease, text-shadow 220ms ease;
+}
+
+.realName {
+  color: var(--text-primary);
+  opacity: 0.65;
+  /* Removed the hardcoded margin-left here! */
+}
+
+.nickName {
+  color: var(--text-primary);
+  opacity: 1;
+  text-shadow: 0 0 18px rgba(156, 167, 99, 0.4);
+  /* Adjust this to push "Lucy" further right from the vertical line */
+  margin-left: 40px; 
+}
+
+/* (Keep the rest of your ::after and :hover effects exactly the same!) */

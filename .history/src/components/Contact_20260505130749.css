@@ -1,0 +1,301 @@
+.contact-wrap {
+  position: relative;
+  z-index: 2;
+  margin-left: 120px;
+  padding: 40px 24px 80px;
+  color: var(--text-primary);
+}
+
+.contact-hero {
+  max-width: 1100px;
+  margin: 0 auto 26px;
+}
+
+.contact-title {
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  font-size: 76px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 10px 0 8px;
+}
+
+.contact-subtitle {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 760px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.contact-glow-line {
+  margin-top: 18px;
+  height: 2px;
+  width: 100%;
+  max-width: 1100px;
+  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
+  box-shadow: 0 0 18px rgba(156, 167, 99, 0.3);
+  border-radius: 999px;
+  opacity: 0.5;
+}
+
+.contact-grid {
+  max-width: 1100px;
+  margin: 68px auto 0;
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr;
+  gap: 26px;
+  align-items: start;
+}
+
+.contact-card {
+  /* Using transparent backgrounds ensures it adapts properly to light/dark */
+  background: rgba(128, 128, 128, 0.05);
+  border: 1px solid var(--accent);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, var(--accent));
+  transform: rotate(-45deg);
+  transition: all 0.55s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.1), 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card:hover::before {
+  opacity: 0.2;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+.contact-form {
+  padding: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: rgba(128, 128, 128, 0.05);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  transition: 0.25s ease;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.field textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-primary);
+  opacity: 0.6;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--text-primary);
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
+  background: var(--accent);
+  color: var(--bg-color);
+}
+
+.contact-info {
+  padding: 18px 18px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.info-title {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  margin: 6px 0 16px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: rgba(128, 128, 128, 0.05);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.info-ico {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  position: relative;
+  z-index: 2;
+}
+
+.info-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.info-link:hover {
+  text-decoration: underline;
+  color: var(--accent);
+}
+
+.info-note {
+  margin-top: 14px;
+  opacity: 0.85;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.7;
+  font-size: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.scroll-top-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 2%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20%;
+  text-decoration: none;
+  color: var(--text-primary);
+  z-index: 10;
+  background: rgba(128, 128, 128, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--accent);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  background: var(--accent);
+  color: var(--bg-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent);
+}
+
+@media (max-width: 980px) {
+  .contact-wrap { 
+    margin-left: 0; 
+    padding: 40px 2% 40px; 
+  }
+  .contact-grid { 
+    grid-template-columns: 1fr; 
+    margin-top: 20px; 
+  }
+  .contact-title { font-size: 38px; }
+}
+
+@media (max-width: 610px) {
+  .contact-wrap { 
+    margin-left: 0; 
+    padding: 0px 5% 10px; 
+  }
+  .contact-grid{
+    width: 70%;
+  }
+.contact-subtitle {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 760px;
+  opacity: 0.9;
+  
+  .contact-row { grid-template-columns: 1fr; }
+  .contact-title { font-size: 42px; 
+  letter-spacing: 0.5px;
+margin: 8px;}
+  .contact-subtitle { font-size: 14px;
+    line-height: 0.;
+  max-width: 760px;
+   }
+  .scroll-top-btn { width: 36px; height: 26px; bottom: 3%; right: 5%; }
+}
