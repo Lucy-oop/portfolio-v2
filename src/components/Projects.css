@@ -25,6 +25,11 @@
   margin-bottom: clamp(14px, 2vw, 16px);
 }
 
+/* Inline thumbnail: desktop uses the hover corner-preview instead, so hide it there */
+.project-thumb-link {
+  display: none;
+}
+
 .project .pname {
   font-family: "Alumni Sans Pinstripe", sans-serif;
   font-style: normal;
@@ -206,41 +211,67 @@
   .cornerPreview, .liquid-hint, .liquid-hint.show { display: none !important; }
   
   .allproject {
-    margin-top: -80px;
+    margin-top: 0;
     width: 100%;
     max-width: 100%;
     margin-right: 0;
-    text-align: right; /* Better readability on tablet/mobile */
+    text-align: right;
   }
-  
-  .project { margin-bottom: 12px; }
-  
-  .project .pname { 
-    font-size: clamp(28px, 7.5vw, 32px); 
-    line-height: 0.42; 
-    letter-spacing: 0.4px; 
-    font-weight: bold; 
+
+  .project { margin-bottom: 28px; }
+
+  .project .pname {
+    font-size: clamp(28px, 7.5vw, 36px);
+    line-height: 1.05;
+    letter-spacing: 0.4px;
+    font-weight: bold;
     white-space: normal;
   }
-  
-  .project .p-info { font-size: 10px; opacity: 0.9; margin-top: 4px; }
+
+  .project .p-info { font-size: 12px; opacity: 0.9; margin-top: 4px; }
   .project .p-info span { margin-left: 6px; opacity: 0.85; display: inline-block; }
+
+  /* Show the tappable thumbnail so mobile/tablet users can actually see projects */
+  .project-thumb-link {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .project-thumb {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    border: 1px solid var(--accent);
+    transition: opacity 0.3s ease;
+  }
 }
 
 @media (max-width: 600px) {
   .project-container {
-    padding: 80px 5% 30px;
+    padding: 80px 5% 40px;
   }
-  
+
   .project .pname {
-    font-size: clamp(28px, 7.5vw, 24px);
+    font-size: clamp(22px, 6.5vw, 30px);
+    line-height: 1.1;
   }
-  
+
   .project .p-info {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
 @media (min-width: 1025px) {
   .allproject { max-width: min(52ch, 55%); }
+}
+
+/* Touch devices can't hover, so names would stay dimmed at 50% opacity.
+   Keep them readable (the dim→glow interaction still works on hover devices). */
+@media (hover: none) {
+  .project .pname {
+    opacity: 0.92;
+  }
 }

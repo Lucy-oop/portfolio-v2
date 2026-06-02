@@ -1,11 +1,13 @@
 .about-container {
-  position: relative; 
+  position: relative;
   z-index: 5;
   margin-top: 30px;
   display: flex;
   margin-left: 120px;
   padding-left: 12px;
-  height: 100%; 
+  /* Definite height (section padding-top 80px + this margin-top 30px) so the
+     absolutely-positioned .ibelieve p and .social-icons anchor to the bottom. */
+  height: calc(100dvh - 110px);
 }
 
 .name {
@@ -25,8 +27,8 @@
 
 .bio-info {
   margin-top: 40px;
-  line-height: 30px;
-  font-weight: light;
+  line-height: 1.7;
+  font-weight: 300;
   font-size: clamp(14px, 1.2vw, 18px);
 }
 
@@ -63,16 +65,16 @@
 /* vertical line */
 .name-wrapper {
   margin-top: 10px;
-  margin-left: 140px; 
-  border-left: 2px solid var(--text-primary); 
-  padding-left: 20px; 
+  margin-left: 140px;
+  border-left: 2px solid var(--text-primary);
+  padding-left: 20px;
   opacity: 0.8;
 }
 .name-wrapper2 {
   margin-top: 10px;
-  margin-left: 296px; 
-  border-left: 2px solid var(--text-primary); 
-  padding-left: 20px; 
+  margin-left: 296px;
+  border-left: 2px solid var(--text-primary);
+  padding-left: 20px;
   opacity: 0.8;
 }
 
@@ -95,7 +97,7 @@
 .nickName {
   color: var(--text-primary);
   opacity: 1;
-  text-shadow: 0 0 18px rgba(156, 167, 99, 0.4);
+  text-shadow: 0 0 18px var(--accent);
 }
 
 .realName::after,
@@ -116,7 +118,7 @@
 .nickName:hover {
   transform: translateY(-2px);
   opacity: 1;
-  text-shadow: 0 0 22px rgba(156, 167, 99, 0.6);
+  text-shadow: 0 0 22px var(--accent);
 }
 
 .realName:hover::after,
@@ -134,12 +136,15 @@
 
 /* Explore link (glow + underline) */
 .ctaLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: "Courier New", Courier, monospace;
   font-size: clamp(12px, 1.1vw, 18px);
   text-decoration: none;
   color: var(--text-primary);
   position: relative;
-  padding: 8px 2px;
+  padding: 8px 4px;
   transition: 0.25s ease;
 }
 
@@ -230,76 +235,87 @@
 
 /* ✅ Responsive */
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .about-container {
-    margin-top: 0;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 6%;
+    height: auto;
   }
-  
-  .bio-desc, .ibelieve p {
-    max-width: 75%;
+
+  .bio-info {
+    margin-top: 20px;
   }
- 
-   .bio-info p{
-    display: none;
+
+  /* Keep the intro paragraph visible — it's core content, not decoration */
+  .bio-info p {
+    margin-right: 0;
+    max-width: 100%;
   }
-    .ibelieve {
-      padding: 10px;
-    }
-    .ctaRow{
-      margin-top: 30px;
-    }
-  .name-wrapper { margin-left: 5%; }
-  .name-wrapper2 { margin-left: 15%; }
-  
-  .role { margin-top: 25px; }
-  .ibelieve { margin-top: 10px; }
+
+  .ibelieve {
+    margin-top: 24px;
+    padding: 0;
+  }
+
+  /* Was pinned to the section bottom with position:absolute, which overlapped
+     other content on shorter screens. Put it back into normal flow. */
+  .ibelieve p {
+    position: static;
+    margin-top: 16px;
+    max-width: 100%;
+  }
+
+  .ctaRow { margin-top: 24px; }
+
+  .name-wrapper  { margin-left: 6%; }
+  .name-wrapper2 { margin-left: 18%; }
+
+  .role { margin-top: 24px; }
+
+  /* Was an absolutely-positioned vertical column of 5 icons that overflowed
+     the viewport. Now flows after the content as a wrapping row. */
+  .social-icons {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    margin: 32px 0 56px;
+  }
+
+  .social-icons a {
+    margin: 0;
+  }
 }
 
 /* Mobile (max-width: 600px) */
 @media (max-width: 600px) {
   .about-container {
-    top: 0;
-    min-height: 100dvh; 
-  }
-
-  .allbio {
-    flex: none;
-    height: auto;
-    margin-top: 10px; 
-  }
-  .bio-info p{
-    display: none;
-  }
-  .ibelieve {
-    display: none;
+    padding: 0 5%;
   }
 
   .helloTitle {
     word-spacing: 2px;
   }
 
-  .name-wrapper { margin-left: 50px; }
-  .name-wrapper2 { margin-left: 120px; }
-
-  .bio-desc {
-    max-width: 100%;
+  .bio-info {
+    line-height: 1.7;
   }
+
+  .name-wrapper  { margin-left: 10%; }
+  .name-wrapper2 { margin-left: 26%; }
 
   .role { margin-top: 20px; }
 
   .social-icons {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-left: 0;
     justify-content: center;
-    margin-top: auto; /* Pushes the entire row to the bottom of .about-container */
-    padding-bottom: 80px; /* Gives some breathing room from the screen edge */
-    width: 100%;
   }
-  
+
+  /* 44x44 minimum touch target */
   .social-icons a {
-    width: 40px;
-    height: 40px;
-    font-size: 1px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
   }
 }

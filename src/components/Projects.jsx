@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 
-import lublogcy from "./mini/lublogcy.png";
+import logvault from "./mini/logvault.jpg";
 import lucyAI from "./mini/lucyAi.png";
 import nexusImg from "./mini/nexus.png";
-import momKitchen from "./mini/momkitchen.png";
-import kfcImg from "./mini/kfc.png";
-import ecommerceImg from "./mini/ecommerce.png";
-import myFlixImg from "./mini/myflix.png";
-import trinkoraImg from "./mini/trinkora.png";
+import momKitchen from "./mini/momkitchen.jpg";
+import kfcImg from "./mini/kfc.jpg";
+import ecommerceImg from "./mini/ecommerce.jpg";
+import myFlixImg from "./mini/myflix.jpg";
+import trinkoraImg from "./mini/trinkora.jpg";
 import jobTracker from "./mini/jobtracker.png";
 
 const projects = [
-  { title: "LuBlogcy", href: "https://lucy-oop.github.io/Lublogcy/", info: "React, Tailwind CSS,TypeScript,Firebase", responsive: true, img: lublogcy },
+  { title: "Log Vault", href: "https://log-vault.vercel.app", info: "React, Tailwind CSS,TypeScript,PostgreSQL", responsive: true, img: logvault },
   { title: "Portfolio AI Assistant", href: "https://ai-portfolio-chatbot-cyan.vercel.app", info: "React, Tailwind CSS,Gemini API,TypeScript", responsive: true, img: lucyAI },
   { title: "Nexus SaaS", href: "https://lucy-oop.github.io/nexus-saas/", info: "React, Tailwind CSS, Framer Motion, Recharts, Vite", responsive: true, img: nexusImg },
   { title: "Job Tracker Dashboard", href: "https://lucy-oop.github.io/job-tracker-dashboard/", info: "React,Tailwind CSS, Node.js ,Lucide Icons ,Express,data Base", responsive: true, img: jobTracker },
@@ -48,7 +48,7 @@ export default function Projects() {
 
       {/* THE CORNER PREVIEW (Hides on mobile in CSS) */}
       <div className={`cornerPreview ${preview ? "show" : ""}`}>
-        {preview && <img src={preview} alt="Project preview" />}
+        {preview && <img src={preview.img} alt={`${preview.title} preview`} />}
       </div>
 
       {/* THE MASSIVE LIQUID PREVIEW HINT */}
@@ -69,11 +69,12 @@ export default function Projects() {
             <a
               href={p.href}
               className="pname"
+              data-text={p.title}
               target="_blank"
               rel="noreferrer"
-              onMouseEnter={() => setPreview(p.img)}
+              onMouseEnter={() => setPreview(p)}
               onMouseLeave={() => setPreview(null)}
-              onFocus={() => setPreview(p.img)}
+              onFocus={() => setPreview(p)}
               onBlur={() => setPreview(null)}
             >
               {p.title}
@@ -83,6 +84,24 @@ export default function Projects() {
               {p.info}
               {p.responsive && <span>[Responsive]</span>}
             </p>
+
+            {/* Inline thumbnail for touch / small screens — the hover preview is desktop-only */}
+            <a
+              className="project-thumb-link"
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${p.title}`}
+              tabIndex={-1}
+            >
+              <img
+                className="project-thumb"
+                src={p.img}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
           </div>
         ))}
       </div>

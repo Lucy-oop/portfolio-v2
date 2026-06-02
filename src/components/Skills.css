@@ -5,7 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  /* Definite min-height (section padding-top is 80px) so justify-content:center
+     can vertically center the columns on desktop. */
+  min-height: calc(100dvh - 80px);
 }
 
 .coding-wrapper {
@@ -123,7 +125,11 @@
   box-shadow: inset 0 0 20px rgba(37, 78, 40, 0);
   outline: 1px solid var(--accent);
   outline-offset: 0px;
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition:
+    outline-offset 1250ms cubic-bezier(0.19, 1, 0.22, 1),
+    outline-color 1250ms cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 1250ms cubic-bezier(0.19, 1, 0.22, 1),
+    border-color 1250ms cubic-bezier(0.19, 1, 0.22, 1);
   color: var(--text-primary);
   opacity: 0.9;
 }
@@ -148,57 +154,84 @@
   opacity: 0.85;
 }
 
-@media (max-width: 960px) {
-.skill-container {
+@media (max-width: 1024px) {
+  .skill-container {
     margin-left: 0;
-    padding: 100px 5% 40px;
-    margin-top: -30px;
+    padding: 96px 6% 48px;
+    min-height: 0;
+    justify-content: flex-start;
   }
 
+  .coding-wrapper {
+    gap: 24px 32px;
+    justify-content: center;
+  }
+
+  /* Two readable columns instead of three cramped ones */
   .divide {
-    min-width: 20%;
+    flex: 1 1 40%;
+    min-width: 260px;
+  }
+
+  .col-2 {
+    margin-top: 0;
+  }
+
+  .other_skill a,
+  .coding_skill a {
+    font-size: 22px;
   }
 
   .skill h2 {
     font-size: 16px;
-    font-weight: 400;
-    padding: 4px 6px;
-    margin: 4px;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin: 4px 0;
   }
 
+  /* 14px keeps body text readable (was shrinking to 10px) */
   .skill li {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .skill {
-    margin: 0;
+    margin: 8px 0;
   }
-
 }
 
 @media (max-width: 600px) {
   .skill-container {
-    margin-left: 0;
-    padding: 100px 5% 40px;
+    padding: 88px 6% 48px;
+  }
+
+  /* Single column on phones so nothing gets squished */
+  .coding-wrapper {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .divide {
-    min-width: 10%;
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .other_skill a,
+  .coding_skill a {
+    font-size: 20px;
+  }
+
+  /* Thin (100) letters get faint on small screens — bump for legibility */
+  .other_skill a span,
+  .coding_skill a span {
+    font-weight: 300;
   }
 
   .skill h2 {
-    font-size: 12px;
-    font-weight: 300;
-    padding: 4px 6px;
-    margin: 4px;
+    font-size: 15px;
+    font-weight: 500;
   }
 
   .skill li {
-    font-size: 10px;
+    font-size: 14px;
   }
-
-  .skill {
-    margin: 0;
-  }
-
 }

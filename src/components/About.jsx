@@ -19,7 +19,7 @@ function About() {
               <div className="name-wrapper2">
                 <span className="nickName">"Lucy"</span>.
               </div>
-              
+
           </h1>
           <div className='role'>Junior Frontend Developer</div>
 

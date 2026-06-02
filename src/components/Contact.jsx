@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { ArrowUp } from "lucide-react"; 
 import "./Contact.css";
 
+// Get a free key at https://web3forms.com (no account/login required).
+// Paste it below — submissions are delivered straight to your email.
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -9,16 +13,43 @@ export default function Contact() {
     phone: "",
     message: "",
   });
+  // "idle" | "sending" | "success" | "error"
+  const [status, setStatus] = useState("idle");
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setForm((p) => ({ ...p, [name]: value }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    alert("Thanks Lucy! Message sent (demo).");
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New message from your portfolio",
+          from_name: form.name || "Portfolio visitor",
+          ...form,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -86,27 +117,38 @@ export default function Contact() {
             />
           </label>
 
-          <button className="contact-btn" type="submit">
-            Send Message
+          <button
+            className="contact-btn"
+            type="submit"
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? "Sending…" : "Send Message"}
           </button>
+
+          {status === "success" && (
+            <p className="contact-status is-success" role="status">
+              ✓ Thanks! Your message has been sent — I’ll get back to you soon.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="contact-status is-error" role="alert">
+              Something went wrong. Please try again, or email me directly.
+            </p>
+          )}
         </form>
 
         <aside className="contact-card contact-info">
           <h3 className="info-title">Contact Info</h3>
 
-          <div className="info-item">
+          <a className="info-item" href="mailto:tomon5609@gmail.com">
             <span className="info-ico" aria-hidden="true">✉</span>
-            <a className="info-link" href="mailto:tomon5609@gmail.com">
-              tomon5609@gmail.com
-            </a>
-          </div>
+            <span className="info-link">tomon5609@gmail.com</span>
+          </a>
 
-          <div className="info-item">
+          <a className="info-item" href="tel:+941574675">
             <span className="info-ico" aria-hidden="true">☎</span>
-            <a className="info-link" href="tel:+941574675">
-              +9 41574675
-            </a>
-          </div>
+            <span className="info-link">+9 41574675</span>
+          </a>
 
           <p className="info-note">
             Available for collaborations, freelance projects, and junior frontend roles.

@@ -9,7 +9,7 @@ function Skills() {
                 {/* --- VERTICAL 1 --- */}
                 <div className='divide'>
                     <div className="coding_skill">
-                        <a href="#">
+                        <a>
                             <span>C</span><span>o</span><span>d</span><span>i</span><span>n</span><span>g</span>
                             <span>~</span>
                             <span>S</span><span>k</span><span>i</span><span>l</span><span>l</span><span>s</span>
@@ -87,7 +87,7 @@ function Skills() {
                 {/* --- VERTICAL 3 --- */}
                 <div className="divide">
                     <div className="other_skill">
-                        <a href="#">
+                        <a>
                             <span>O</span><span>t</span><span>h</span><span>e</span><span>r</span><span>s</span>
                             <span>~</span>
                             <span>S</span><span>k</span><span>i</span><span>l</span><span>l</span><span>s</span>

@@ -129,11 +129,14 @@ body.light-mode {
 .theme-toggle {
   background: none;
   border: none;
-  color: inherit; 
+  color: inherit;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
   transition: transform 0.3s;
 }
 
@@ -157,8 +160,8 @@ body.light-mode {
     width: 95%;
     padding: 10px 14px;
   }
-  .nav-links { gap: 10px; }
-  .nav-links a { font-size: 12px; }
-  .brand-name { display: none; } 
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 13px; padding: 6px 2px; }
+  .nav-brand { font-size: 16px; gap: 8px; }
   .nav-brand-icon { padding: 4px; }
 }
