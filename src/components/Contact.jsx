@@ -4,7 +4,7 @@ import "./Contact.css";
 
 // Get a free key at https://web3forms.com (no account/login required).
 // Paste it below — submissions are delivered straight to your email.
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "44b610bc-ccc7-4f72-bcd1-912925a9157f";
 
 export default function Contact() {
   const [form, setForm] = useState({
