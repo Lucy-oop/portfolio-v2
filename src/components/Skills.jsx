@@ -41,6 +41,7 @@ function Skills() {
                         <ul>
                             <li>Node.js</li>
                             <li>Express.js</li>
+                            <li>Python</li>
                             <li>Firebase</li>
                             <li>Nodemon(dev tool for Node)</li>
                         </ul>
@@ -52,9 +53,10 @@ function Skills() {
                     <div className="skill">
                         <h2>Developer Tools</h2>
                         <ul>
-                            <li>Git</li>
-                            <li>GitHub</li>
+                            <li>Git/Github</li>
                             <li>VS Code</li>
+                            <li>Postman</li>
+                            <li>Vercel</li>
                         </ul>
                     </div>
 
@@ -62,6 +64,7 @@ function Skills() {
                         <h2>Design</h2>
                         <ul>
                             <li>Figma</li>
+                            <li>Stitch</li>
                             <li>Responsive Design</li>
                             <li>Basic UX Principles</li>
                         </ul>
@@ -71,6 +74,7 @@ function Skills() {
                         <h2>AI / Productivity</h2>
                         <ul>
                             <li>Cursor</li>
+                            <li>Claude Code</li>
                             <li>ChatGPT for debugging & code assistance</li>
                             <li>Rapid prototyping</li>
                         </ul>
